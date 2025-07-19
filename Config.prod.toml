@@ -1,0 +1,23 @@
+# Production Configuration for AutoMeetBE
+# DO NOT commit this file with real production values
+
+# Google OAuth Configuration (Production)
+googleClientId = "${GOOGLE_CLIENT_ID}"
+googleClientSecret = "${GOOGLE_CLIENT_SECRET}"
+googleRedirectUri = "${PRODUCTION_URL}/api/auth/google/callback"
+googleCalendarRedirectUri = "${PRODUCTION_URL}/api/auth/google/calendar/callback"
+frontendBaseUrl = "${FRONTEND_PRODUCTION_URL}"
+
+# JWT Configuration (Production)
+JWT_SECRET = "${JWT_SECRET_PROD}"
+jwtSigningKey = "${JWT_SIGNING_KEY_PROD}"
+
+# API Keys (Production)
+hfApiKey = "${HUGGING_FACE_API_KEY}"
+
+# MongoDB Configuration (Production)
+mongoDbUrl = "${MONGODB_CONNECTION_STRING}"
+dbName = "${MONGODB_DATABASE_NAME}"
+
+[somap.mongodb_atlas_app]
+googleCalendarScopes = "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events"

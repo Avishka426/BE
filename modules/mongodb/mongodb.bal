@@ -2,8 +2,8 @@ import ballerinax/mongodb;
 import ballerina/log;
 
 // MongoDB client configuration - using configurable values from Config.toml
-public configurable string mongoDbUrl = "mongodb+srv://pabasara:20020706@mycluster.cb3avmr.mongodb.net/?retryWrites=true&w=majority&appName=mycluster";  // This will read from Config.toml
-public configurable string dbName = "automeet";      // This will read from Config.toml
+public configurable string mongoDbUrl = ?;  // This will read from Config.toml
+public configurable string dbName = ?;      // This will read from Config.toml
 
 // MongoDB client
 public mongodb:Client dbClient = initMongoDbClient();
@@ -44,6 +44,8 @@ function initMongoDbClient() returns mongodb:Client {
     });
     
     if dbclient is error {
+        log:printError("Failed to initialize MongoDB client", dbclient);
+        log:printError("MongoDB URL format: " + mongoDbUrl);
         panic error("Failed to initialize MongoDB client: " + dbclient.message());
     }
     
